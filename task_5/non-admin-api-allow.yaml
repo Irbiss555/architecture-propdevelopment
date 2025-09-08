@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: non-admin-backend-allow-from-frontend
+  namespace: np-task5
+spec:
+  podSelector:
+    matchLabels:
+      role: back-end-api
+  policyTypes:
+  - Ingress
+  # - Egress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          role: front-end
+  # egress:
+  # - to:
+  #   - podSelector:
+  #       matchLabels:
+  #         role: front-end
+---
+# apiVersion: networking.k8s.io/v1
+# kind: NetworkPolicy
+# metadata:
+#   name: non-admin-frontend-allow-to-backend
+#   namespace: np-task5
+# spec:
+#   podSelector:
+#     matchLabels:
+#       role: front-end
+#   policyTypes:
+#   - Ingress
+#   - Egress
+#   egress:
+#   - to:
+#     - podSelector:
+#         matchLabels:
+#           role: back-end-api
+#   ingress:
+#   - from:
+#     - podSelector:
+#         matchLabels:
+#           role: back-end-api
