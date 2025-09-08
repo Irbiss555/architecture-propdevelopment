@@ -1,0 +1,55 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: bind-ns-developer-sales
+  namespace: sales
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ns-developer
+subjects:
+- kind: Group
+  apiGroup: rbac.authorization.k8s.io
+  name: dev-sales
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: bind-ns-developer-utilities
+  namespace: utilities
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ns-developer
+subjects:
+- kind: Group
+  apiGroup: rbac.authorization.k8s.io
+  name: dev-utilities
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: bind-ns-developer-finance
+  namespace: finance
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ns-developer
+subjects:
+- kind: Group
+  apiGroup: rbac.authorization.k8s.io
+  name: dev-finance
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: bind-ns-developer-data
+  namespace: data
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ns-developer
+subjects:
+- kind: Group
+  apiGroup: rbac.authorization.k8s.io
+  name: dev-data

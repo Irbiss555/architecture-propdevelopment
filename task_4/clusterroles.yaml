@@ -1,0 +1,57 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-readonly
+rules:
+- apiGroups: [""]
+  resources: ["pods","pods/log","services","endpoints","configmaps","events","namespaces","nodes","persistentvolumeclaims"]
+  verbs: ["get","list","watch"]
+- apiGroups: ["apps"]
+  resources: ["deployments","daemonsets","replicasets","statefulsets"]
+  verbs: ["get","list","watch"]
+- apiGroups: ["batch"]
+  resources: ["jobs","cronjobs"]
+  verbs: ["get","list","watch"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses","networkpolicies","ingressclasses"]
+  verbs: ["get","list","watch"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get","list","watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-operator
+rules:
+- apiGroups: [""]
+  resources: ["namespaces","pods","pods/log","services","endpoints","configmaps","events","persistentvolumeclaims"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments","daemonsets","statefulsets","replicasets"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["batch"]
+  resources: ["jobs","cronjobs"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses","networkpolicies","ingressclasses"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["storage.k8s.io"]
+  resources: ["storageclasses"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["policy"]
+  resources: ["poddisruptionbudgets"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+# Нет доступа к 'secrets', RBAC и узлам
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: secrets-reader
+rules:
+- apiGroups: [""]
+  resources: ["secrets"]
+  verbs: ["get","list","watch"]

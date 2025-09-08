@@ -1,0 +1,91 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ns-developer
+  namespace: sales
+rules:
+- apiGroups: [""]
+  resources: ["pods","pods/exec","pods/log","services","endpoints","configmaps","events","persistentvolumeclaims"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments","daemonsets","statefulsets","replicasets"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["batch"]
+  resources: ["jobs","cronjobs"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses","networkpolicies"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+# Без доступа к секретам
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ns-developer
+  namespace: utilities
+rules:
+- apiGroups: [""]
+  resources: ["pods","pods/exec","pods/log","services","endpoints","configmaps","events","persistentvolumeclaims"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments","daemonsets","statefulsets","replicasets"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["batch"]
+  resources: ["jobs","cronjobs"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses","networkpolicies"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+# Без доступа к секретам
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ns-developer
+  namespace: finance
+rules:
+- apiGroups: [""]
+  resources: ["pods","pods/exec","pods/log","services","endpoints","configmaps","events","persistentvolumeclaims"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments","daemonsets","statefulsets","replicasets"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["batch"]
+  resources: ["jobs","cronjobs"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses","networkpolicies"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+# Без доступа к секретам
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ns-developer
+  namespace: data
+rules:
+- apiGroups: [""]
+  resources: ["pods","pods/exec","pods/log","services","endpoints","configmaps","events","persistentvolumeclaims"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments","daemonsets","statefulsets","replicasets"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["batch"]
+  resources: ["jobs","cronjobs"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["ingresses","networkpolicies"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+- apiGroups: ["autoscaling"]
+  resources: ["horizontalpodautoscalers"]
+  verbs: ["get","list","watch","create","update","patch","delete"]
+# Без доступа к секретам

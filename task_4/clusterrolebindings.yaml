@@ -1,0 +1,39 @@
+# Группы приходят из Keycloak (OIDC claim 'groups')
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: bind-cluster-readonly-auditors
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-readonly
+subjects:
+- kind: Group
+  apiGroup: rbac.authorization.k8s.io
+  name: auditors
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: bind-cluster-operator-platform
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-operator
+subjects:
+- kind: Group
+  apiGroup: rbac.authorization.k8s.io
+  name: platform-operators
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: bind-secrets-reader-secops
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: secrets-reader
+subjects:
+- kind: Group
+  apiGroup: rbac.authorization.k8s.io
+  name: secops
